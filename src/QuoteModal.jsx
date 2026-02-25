@@ -299,8 +299,8 @@ const QuoteModal = ({ isOpen, onClose }) => {
                                 {/* Tapete card */}
                                 <button
                                     className={`service-card group flex flex-col items-center gap-4 p-6 rounded-2xl border-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer ${serviceType === 'tapete'
-                                            ? 'bg-primary text-white border-primary shadow-lg'
-                                            : 'bg-white text-primary border-primary/10 hover:border-accent/40'
+                                        ? 'bg-primary text-white border-primary shadow-lg'
+                                        : 'bg-white text-primary border-primary/10 hover:border-accent/40'
                                         }`}
                                     onClick={() => handleServiceSelect('tapete')}
                                 >
@@ -319,8 +319,8 @@ const QuoteModal = ({ isOpen, onClose }) => {
                                 {/* Estofado card */}
                                 <button
                                     className={`service-card group flex flex-col items-center gap-4 p-6 rounded-2xl border-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer ${serviceType === 'estofado'
-                                            ? 'bg-primary text-white border-primary shadow-lg'
-                                            : 'bg-white text-primary border-primary/10 hover:border-accent/40'
+                                        ? 'bg-primary text-white border-primary shadow-lg'
+                                        : 'bg-white text-primary border-primary/10 hover:border-accent/40'
                                         }`}
                                     onClick={() => handleServiceSelect('estofado')}
                                 >
@@ -363,8 +363,8 @@ const QuoteModal = ({ isOpen, onClose }) => {
                                 {!photoPreview ? (
                                     <div
                                         className={`relative border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${isDragging
-                                                ? 'border-accent bg-accent/5 scale-[1.02]'
-                                                : 'border-primary/20 hover:border-accent/40 hover:bg-accent/5'
+                                            ? 'border-accent bg-accent/5 scale-[1.02]'
+                                            : 'border-primary/20 hover:border-accent/40 hover:bg-accent/5'
                                             }`}
                                         onClick={() => fileInputRef.current?.click()}
                                         onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
@@ -608,7 +608,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
                                 <button
                                     onClick={handleSubmit}
                                     disabled={isSubmitting}
-                                    className="flex-1 flex items-center justify-center gap-2 bg-accent text-white px-5 py-3 rounded-xl font-body text-sm font-semibold hover:bg-accent/90 active:scale-[0.98] transition-all shadow-lg shadow-accent/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                                    className="flex-1 flex items-center justify-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-body text-sm font-semibold hover:bg-primary/90 active:scale-[0.98] transition-all shadow-lg shadow-primary/20 disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
                                     {isSubmitting ? (
                                         <>
