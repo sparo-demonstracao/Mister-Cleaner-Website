@@ -165,9 +165,9 @@ const Hero = ({ openQuote }) => {
                         <span className="btn-bg"></span>
                         <span className="btn-text">Solicitar Orçamento</span>
                     </button>
-                    <button className="btn-secondary">
+                    <a href="#depoimentos" className="btn-secondary">
                         <span className="btn-text">Ver Resultados</span>
-                    </button>
+                    </a>
                 </div>
 
                 <div className="hero-stats">
@@ -654,7 +654,7 @@ const Testimonials = ({ openQuote }) => {
     }, { scope: sectionRef });
 
     return (
-        <section ref={sectionRef} className="w-full py-16 md:py-24 bg-background overflow-hidden">
+        <section ref={sectionRef} id="depoimentos" className="w-full py-16 md:py-24 bg-background overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 {/* Header */}
                 <div ref={headerRef} className="text-center mb-12 md:mb-16">
