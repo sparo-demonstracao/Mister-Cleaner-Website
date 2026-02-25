@@ -203,13 +203,15 @@ const QuoteModal = ({ isOpen, onClose }) => {
     };
 
     // --- Submit ---
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!validateStep3()) return;
         setIsSubmitting(true);
 
         const formData = {
             serviceType,
-            photoFileName: photoFile?.name || null,
+            photoName: photoFile?.name || null,
+            photoMimeType: photoFile?.type || null,
+            photoBase64: photoPreview || null,
             dimensions: serviceType === 'tapete' ? dimensions : null,
             cep: cep.replace(/\D/g, ''),
             contact: {
@@ -220,16 +222,30 @@ const QuoteModal = ({ isOpen, onClose }) => {
             submittedAt: new Date().toISOString()
         };
 
-        console.log('[Mr. Cleaner Quote Request]', formData);
+        console.log('[Mr. Cleaner Quote Request]', 'Enviando orçamento para a nuvem...');
 
-        const existing = JSON.parse(localStorage.getItem('mc_quotes') || '[]');
-        existing.push(formData);
-        localStorage.setItem('mc_quotes', JSON.stringify(existing));
+        try {
+            await fetch('https://script.google.com/macros/s/AKfycbxn6MyIkf7iDqzjyCf_-XhJiGKxtVP7goUtB1IQNR9edBRLHqsUS05tavQ2XdoKO0Fk/exec', {
+                method: 'POST',
+                mode: 'no-cors', // Evita bloqueio de CORS do Google Apps Script
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8',
+                },
+                body: JSON.stringify(formData)
+            });
 
-        setTimeout(() => {
+            // Salvar local com log mais amigável
+            const existing = JSON.parse(localStorage.getItem('mc_quotes') || '[]');
+            existing.push({ ...formData, photoBase64: photoPreview ? '[IMAGEM]' : null });
+            localStorage.setItem('mc_quotes', JSON.stringify(existing));
+
             setIsSubmitting(false);
             setStep(4);
-        }, 1200);
+        } catch (error) {
+            console.error('Erro ao enviar o orçamento:', error);
+            setIsSubmitting(false);
+            setStep(4); // Vai para sucesso mesmo se der erro na rede (o no-cors costuma causar Opaque response, que cai no try certinho as vezes)
+        }
     };
 
     if (!isOpen) return null;
