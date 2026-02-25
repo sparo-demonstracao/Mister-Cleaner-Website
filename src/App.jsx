@@ -153,7 +153,7 @@ const Hero = ({ openQuote }) => {
 
                 <h1 className="hero-title">
                     <span className="title-main">Seu tapete merece o melhor</span>
-                    <span className="title-accent">cuidado.</span>
+                    <span className="title-accent !text-[#556b3e] !bg-none" style={{ WebkitTextFillColor: 'initial' }}>cuidado.</span>
                 </h1>
 
                 <p className="hero-description">
@@ -357,7 +357,7 @@ const Features = () => {
                             <h3 className="font-heading font-bold text-xl text-white">Higienização Profunda</h3>
                         </div>
                         <div className="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full border border-white/10">
-                            <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+                            <div className="w-2 h-2 rounded-full bg-[#52b788] animate-pulse"></div>
                             <span className="font-body text-[10px] font-bold text-white/90 uppercase tracking-widest">Ativo</span>
                         </div>
                     </div>
